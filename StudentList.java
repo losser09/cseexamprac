@@ -9,58 +9,59 @@ public class StudentList {
         if (args[0].equals("a")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader s = new BufferedReader(
+                BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(
                                 new FileInputStream("students.txt")));
-                String r = s.readLine();
-                String i[] = r.split(",");
-                for (String j : i) {
-                    System.out.println(j);
+                String str = bufferedReader.readLine();
+                String line[] = str.split(",");
+                for (String ch : line) {
+                    System.out.println(ch);
                 }
             } catch (Exception e) {
-            	alert();
+
             }
+
             System.out.println("Data Loaded.");
         } else if (args[0].equals("r")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader s = new BufferedReader(
+                BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(
                                 new FileInputStream("students.txt")));
-                String r = s.readLine();
-                System.out.println(r);
-                String i[] = r.split(",");
-                Random x = new Random();
-                int y = x.nextInt();
-                System.out.println(i[y]);
+                String str = bufferedReader.readLine();
+                System.out.println(str);
+                String line[] = str.split(",");
+                Random random = new Random();
+                int integer = random.nextInt();
+                System.out.println(line[integer]);
             } catch (Exception e) {
-            	alert();
+
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("+")) {
             System.out.println("Loading data ...");
             try {
-                BufferedWriter s = new BufferedWriter(
+                BufferedWriter bufferedWriter = new BufferedWriter(
                         new FileWriter("students.txt", true));
-                String t = args[0].substring(1);
+                String str = args[0].substring(1);
                 Date d = new Date();
                 String df = "dd/mm/yyyy-hh:mm:ss a";
                 DateFormat dateFormat = new SimpleDateFormat(df);
                 String fd = dateFormat.format(d);
-                s.write(", " + t + "\nList last updated on " + fd);
-                s.close();
+                bufferedWriter.write(", " + str + "\nList last updated on " + fd);
+                bufferedWriter.close();
             } catch (Exception e) {
-            	alert();
+
             }
 
             System.out.println("Data Loaded.");
         } else if (args[0].contains("?")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader s = new BufferedReader(
+                BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(
                                 new FileInputStream("students.txt")));
-                String r = s.readLine();
+                String r = bufferedReader.readLine();
                 String i[] = r.split(",");
                 boolean done = false;
                 String t = args[0].substring(1);
@@ -71,16 +72,16 @@ public class StudentList {
                     }
                 }
             } catch (Exception e) {
-            	alert();
+
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("c")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader s = new BufferedReader(
+                BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(
                                 new FileInputStream("students.txt")));
-                String D = s.readLine();
+                String D = bufferedReader.readLine();
                 char a[] = D.toCharArray();
                 boolean in_word = false;
                 int count = 0;
@@ -96,13 +97,14 @@ public class StudentList {
                 }
                 System.out.println(count + " word(s) found " + a.length);
             } catch (Exception e) {
-            	alert();
+
             }
             System.out.println("Data Loaded.");
         }
+        else alert();
     }
     static void alert()
 	{
-		System.out.Println("error handling");
+		System.out.println("error handling");
 	}
 }
